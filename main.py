@@ -1,6 +1,5 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI
 import uvicorn
-# from database import SessionLocal, engine, Base
 from api.routes import router as api_routers
 from core.config import settings
 from utils.logger import *

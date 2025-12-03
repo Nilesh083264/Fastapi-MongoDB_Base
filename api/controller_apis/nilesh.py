@@ -1,11 +1,16 @@
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
 
 router = APIRouter()
 
-@router.post("/urls")
-async def hello_nilesh(request: Request):
+class DataReq(BaseModel):
+    name: str
+    phone_number: int
+
+@router.post("/pydantic")
+async def hello_nilesh(req: DataReq):
     try:
-        data = await request.json()
+        data = req.dict()
         print("data:", data)
         return {"Nilesh": data}
     except Exception as e:
